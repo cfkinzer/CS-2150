@@ -1,0 +1,21 @@
+
+
+#include <iostream>
+using namespace std;
+
+int xton(int a, int b) {
+  if (b == 1)
+    return a;
+  if (b == 0)
+    return 1;
+  else
+    return a * xton(a, b);
+}
+
+int main() {
+  cout << xton(2, 5) << endl;
+  cout << xton(3, 4) << endl;
+  cout << xton(4, 1) << endl;
+  cout << xton(5, 0) << endl;
+  return 0;
+}

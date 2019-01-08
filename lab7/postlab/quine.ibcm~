@@ -1,0 +1,22 @@
+C005 000          jmp     start    jump to start
+0001 001  one     dw      15       one
+0000 002  temp    dw      1        temp = 0
+0001 003  count   dw      1        count = 1
+0015 004  size    dw      0        size
+3000 005          load             load into acc
+4002 006  start   store   temp     store temp
+4008 007          store   doit     store doit on next line
+0000 008  doit    dw      0        doit
+1800 009          printH           print acc
+3003 00A          load    count    load count into acc
+5001 00B          add     one      count++
+4003 00C          store   count    save incremented count
+6004 00D          sub     size     count - size in acc
+D015 00E          jmpe    end      jump to end if count - size = 0
+E015 00F          jmpl    end      jump to end if count - size < 0
+3002 010          load    temp     load the temp val
+5001 011          add     one      temp++
+C006 012          jmp     start    go back to start
+3001 013  end     load    one      load 1
+4003 014          store   count    count = 1
+1800 015          printH           print

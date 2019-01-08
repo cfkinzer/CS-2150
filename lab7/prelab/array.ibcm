@@ -1,0 +1,37 @@
+C00C 000           jmp     start     skip around the variables
+0003 001   size    dw      3         size of array = 3
+0000 002   a       dw      0         int[] a
+0000 003   itr     dw      0         int itr
+0000 004   max     dw      0         max value = 0
+0001 005   one     dw      1
+3000 006   ldit    dw      3000
+0000 007   curr    dw      0
+0001 008   a[0]    dw      1         a[0] = 1
+0002 009   a[1]    dw      2         a[1] = 2
+0003 00A   a[2]    dw      3         a[2] = 3
+0000 00B                             
+3001 00C   start   load    size      load size into acc
+6003 00D           sub     itr       size - itr in acc
+E01E 00E           jmpl    end       go to end if size - itr < 0
+D01E 00F           jmpe    end       go to end if size - itr = 0
+3006 010           load    ldit      form instruction to load a[i]
+5002 011           add     a[]       go to a[] in memory
+5003 012           add     itr       go to a[itr] in memory
+4014 013           store   doit      plant instruction
+0000 014   doit    dw      0         load a[itr]
+4007 015           store   curr      curr = a[itr]
+6004 016           sub     max       a[itr] - max in acc
+E01A 017           jmpl    endloop   go to end of loop if a[itr] < max
+3007 018           load    curr      get a[itr] back in acc
+4004 019           store   max       max = a[itr]
+3003 01A   endloop load    itr       load itr into acc
+5005 01B           add     one       itr++
+4003 01C           store   itr       store incremented itr to memory
+C00C 01D           jmp     start     go back to the beginning
+3004 01E   end     load    max       load max back into acc
+1800 01F           printH            print max to screen
+0000 020           halt              halt
+B000 021                             Christian Kinzer
+B000 022                             cfk5ax
+B000 023                             10/29/18
+B000 024                             9:30 AM

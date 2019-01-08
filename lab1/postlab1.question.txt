@@ -1,0 +1,7 @@
+// Christian Kinzer
+// cfk5ax
+// 9/5/18
+// postlab1.question.txt
+// 9:30 AM lab
+
+What is a struct? What data type is T?

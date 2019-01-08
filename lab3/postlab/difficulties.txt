@@ -1,0 +1,6 @@
+// Christian Kinzer
+// cfk5ax
+// 9/20/18
+// difficulties.txt
+
+   Throughout this lab, most of the code was surprisingly easy to write. I felt like the lab was organized in the best possible way, by first using the built in <stack> class and then implementing our own. While I would love to say that I completed this lab with no difficulties, I was stuck for longer than I'd like to admit thanks to some typos. When #including, I accidentally included one file as .cpp instead of .h and I misspelled include for another inclusion. The compiler did not like these typos, and gave me so many errors that I struggled to understand them. I really took working in an IDE for granted. Eclipse most certianly would have caught those errors before compilation. Working in emacs though, I'm honestly surprised I didn't have more typos. For all I know, I could have a multitude of typos in this file.

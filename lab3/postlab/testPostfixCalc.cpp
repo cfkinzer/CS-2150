@@ -1,0 +1,36 @@
+// Christian Kinzer
+// cfk5ax
+// 9/20/18
+// testPostfixCalc.cpp
+
+#include <iostream>
+#include "stack.h"
+#include "stackNode.h"
+#include <string>
+#include <cstdlib>
+#include "postfixCalculator.h"
+using namespace std;
+
+int main(){
+  postfixCalculator p;
+  string s;
+  while (cin >> s) {
+    if (s == "+")
+      p.add();
+    else if (s == "-")
+      p.subtract();
+    else if (s == "*")
+      p.multiply();
+    else if (s == "/")
+      p.divide();
+    else if (s == "~")
+      p.negate();
+    else {
+      const char * cstr = s.c_str();
+      int i = atoi(cstr);
+      p.pushNum(i);
+    }
+  }
+  cout << "Result is: " << p.getTopValue() << endl;
+  return 0;
+}

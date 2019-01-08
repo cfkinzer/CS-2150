@@ -1,0 +1,17 @@
+C004 000            jmp     start
+0001 001   one      dw      one
+0010 002   size     dw      size=16
+3000 003   load     dw      load func
+3001 004   start    load    size
+6011 005            sub     size - i (i is 0 bc out of bounds)
+E010 006            jmpl    jump to end if i > size
+3003 007            load    load func
+5011 008            add     i (i is initially 0)
+400A 009            store   doit
+0000 00A   doit     dw      doit
+1800 00B            printH  print acc
+3011 00C            load    i
+5001 00D            add     1, i++
+4011 00E            store   save incremented i
+C004 00F            jmp     start
+0000 010   end

@@ -1,0 +1,6 @@
+// Christian Kinzer
+// cfk5ax
+// 9/17/18
+// unix.questions.txt
+
+Why are there restrictions on filenames? I understand it's bad practice to use characters that aren't alphanumeric, but what exactly is wrong with it?

@@ -1,0 +1,35 @@
+C00B 000              jmp     start     skip around the variables
+0000 001      a       dw      0         int a
+0000 002      b       dw      0         int b
+0000 003      c       dw      0         int c
+0000 004      d       dw      0         int d
+0001 005      one     dw      1
+0000 006      zero    dw      0
+0000 007                                leave space for changes
+0000 008
+0000 009
+0000 00A
+1000 00B      start   readH             read a onto accum
+4001 00C	      store   a         store a to memory slot 1
+1000 00D              readH             read b onto accum
+4002 00E              store   b         store b to memory slot 2
+1000 00F              readH             read c onto accum
+4003 010              store   c         store c to memory slot 3
+3001 011	      load    a         take a into the accum
+5002 012	      add     b         add b to accum
+5003 013	      add     c         add c to accum
+4004 014	      store   d         store d to memory slot 4
+1800 015              printH  d         print d to screen
+D018 016              jmpe    xit       jump to xit if d = 0
+C00B 017              jmp     start     otherwise, jump to start
+3001 018      xit     load    a         load a onto accum 
+1800 019              printH  a         print a onto screen 
+3002 01A	      load    b         load b onto accum
+1800 01B	      printH  b         print b onto screen 
+3003 01C	      load    c         load c onto accum 
+1800 01D	      printH  c         print c onto accum
+0000 01E	      halt              halt
+B000 01F              nop               Christian Kinzer
+B000 020              nop               cfk5ax
+B000 021              nop               10/29/18
+B000 022              nop               9:30 AM

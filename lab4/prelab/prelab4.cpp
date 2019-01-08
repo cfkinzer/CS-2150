@@ -1,0 +1,66 @@
+// Christian Kinzer
+// cfk5ax
+// 9/24/18
+// prelab4.cpp
+
+#include <iostream>
+#include <string>
+#include <climits>
+using namespace std;
+
+void sizeOfTest() {
+  int a;
+  unsigned int b;
+  float c;
+  double d;
+  char e;
+  bool f;
+  int * g;
+  char * h;
+  double * i;
+  cout << "size of int: " << sizeof a << '\n'
+       << "size of unsigned int: " << sizeof b << '\n'
+       << "size of float: " << sizeof c << '\n'
+       << "size of double: " << sizeof d << '\n'
+       << "size of char: " << sizeof e << '\n'
+       << "size of bool: " << sizeof f << '\n'
+       << "size of int pointer: " << sizeof g << '\n'
+       << "size of char pointer: " << sizeof h << '\n'
+       << "size of double pointer: " << sizeof i << '\n';
+}
+
+void outputBinary(unsigned int i) {
+  string s;
+  while (i != 0) {
+    s = (i % 2 == 0 ? "0":"1") + s;
+    i /= 2;
+  }
+  while (s.length() < 32) {
+    s = "0" + s;
+  }
+  string space = " ";
+  s.insert(28, space);
+  s.insert(24, space);
+  s.insert(20, space);
+  s.insert(16, space);
+  s.insert(12, space);
+  s.insert(8, space);
+  s.insert(4, space);
+  cout << s << endl;
+}
+
+void overflow() {
+  unsigned int i = UINT_MAX;
+  i += 1;
+  cout << i << endl;
+  cout << "The higher byte added when adding one gets rejected (1000 0000 0000 ... -> 0000 0000 ...)" << endl;
+}
+
+int main() {
+  int x;
+  cout << "Please input an integer." << endl;
+  cin >> x;
+  sizeOfTest();
+  outputBinary(x);
+  overflow();
+}

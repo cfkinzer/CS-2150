@@ -1,0 +1,71 @@
+C010 000         jmp       start        skip vars
+0005 001  max    dw        5            max = 5
+0000 002  i      dw        0            i = 0
+0004 003  j      dw        4            j = max - 1 = 4
+0000 004  zero   dw        0            const 0
+0001 005  one    dw        1            const 1
+5000 007  adit   dw        5000         adit instruction
+0000 008  temp1  dw        0            storage
+0000 009  temp2  dw        0            storage
+3000 00A  ldit   dw        3000         load instruction
+4000 00B  stit   dw        4000         store instruction
+B000 00C
+B000 00D
+B000 00E
+B000 00F
+3001 010  start  load      max          load max
+6002 011         sub       i            max - i in acc
+E03D 012         jmpl      xit          goto xit if max - i < 0
+D03D 013         jmpe      xit          goto xit if max - i = 0
+3003 014  loop1  load      j            load j
+6002 015         sub       i            j - i in acc
+E039 016         jmpl      endl1        goto endl1 if j - i < 0
+D039 017         jmpe      endl1        goto endl1 if j - i = 0
+300A 018         load      ldit         load ldit
+50   019         add       a[]          go to a[]
+5003 01A         add       j            go to a[j]
+401C 01B         store     doit1        doit1 = a[j]
+0000 01C  doit1  dw        0            
+4008 01D         store     temp1        temp1 = a[j]
+300A 01E         load      ldit         load ldit
+50   01F         add       a[]          ldit = a[]
+5003 020         add       j            ldit = a[j]
+6005 021         sub       one          ldit = a[j-1]
+4023 022         store     doit2        store doit2 on next line
+0000 023  doit2  dw        0            doit2 in mem
+4009 024         store     temp2        temp2 = a[j-1]
+6008 025         sub       temp1        a[j-1] - a[j]
+E035 026         jmpl      endl2        if a[j-1]-a[j]<0, goto endl2
+D035 027         jmpe      endl2        if a[j-1]-a[j]=0, goto endl2
+300B 028         load      stit         load the stit instruction
+50   029         add       a[]          a[]
+5003 02A         add       j            a[j]
+6005 02B         sub       one          stit = a[j-1]
+402E 02C         store     doit3        
+3008 02D         load      temp1
+0000 02E  doit3  dw        0            store a[j] in a[j-1]
+300B 02F         load      stit         load a[j-1]
+50   030         add       a[]          a[]
+5003 031         add       j            a[j]
+4034 032         store     doit4
+3009 033         load      temp2
+0000 034  doit4  dw        0            store a[j-1] in a[j]
+3003 035  endl2  load      j            load j
+6005 036         sub       one          j--
+4003 037         store     j            store decremented j
+C014 038         jmp       loop1        return to beginning of loop1
+3002 039  endl1  load      i            load i
+5005 03A         add       one          i++
+4002 03B         store     i            store i
+C010 03C         jmp       start        return to beginning
+0000 03D  xit    halt                   sorted
+003F 03E  a[]    dw        a[]          pointer to a[]
+0005 03F  a[0]   dw        5            a[0]=5
+0004 040  a[1]   dw        4            a[1]=4
+0003 041  a[2]   dw        3            a[2]=3
+0002 042  a[3]   dw        2            a[3]=2
+0001 043  a[4]   dw        1            a[4]=1
+B000 044         nop                    Christian Kinzer
+B000 045         nop                    cfk5ax
+B000 046         nop                    10/30/18
+B000 047         nop                    9:30 AM
